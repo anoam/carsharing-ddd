@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd.xsd"
+                 version="2.2">
+
+    <package>tech.anokhin.carsharing.domain</package>
+    <entity class="tech.anokhin.carsharing.domain.Driver" metadata-complete="true" access="FIELD">
+        <table name="drivers" />
+        <attributes>
+            <id name="license" /> <!--We can use db-generated or any other artificial ID as well. Even though license is an identity for the domain object. -->
+            <basic name="name">
+                <column name="name" length="300"/>
+            </basic>
+        </attributes>
+    </entity>
+
+    <entity class="tech.anokhin.carsharing.domain.Car"  metadata-complete="true" access="FIELD">
+        <attributes>
+            <id name="registration" />
+            <one-to-one name="currentDriver" />
+        </attributes>
+    </entity>
+</entity-mappings>
